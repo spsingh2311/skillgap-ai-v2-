@@ -1,0 +1,22 @@
+{
+  "Python": {
+    "career": "Machine Learning Engineer",
+    "demand": "High"
+  },
+  "JavaScript": {
+    "career": "Frontend Developer",
+    "demand": "Medium"
+  },
+  "SQL": {
+    "career": "Data Analyst",
+    "demand": "High"
+  },
+  "Java": {
+    "career": "Backend Developer",
+    "demand": "High"
+  },
+  "CSS": {
+    "career": "UI Developer",
+    "demand": "Medium"
+  }
+}
