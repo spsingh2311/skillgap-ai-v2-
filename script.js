@@ -148,3 +148,33 @@ data:Object.values(jobData)
 })
 
 }
+const analyzeBtn = document.getElementById("analyzeBtn")
+const githubResult = document.getElementById("githubResult")
+
+analyzeBtn.addEventListener("click", analyzeGithub)
+
+async function analyzeGithub(){
+
+const username = document.getElementById("githubUser").value
+
+if(username === ""){
+githubResult.innerHTML="Please enter a username"
+return
+}
+
+const url = "https://api.github.com/users/" + username
+
+const response = await fetch(url)
+
+const data = await response.json()
+
+githubResult.innerHTML = `
+<h3>${data.name}</h3>
+<img src="${data.avatar_url}" width="100">
+<p>Public Repositories: ${data.public_repos}</p>
+<p>Followers: ${data.followers}</p>
+<p>Following: ${data.following}</p>
+<p>Profile: <a href="${data.html_url}" target="_blank">Visit GitHub</a></p>
+`
+
+}
