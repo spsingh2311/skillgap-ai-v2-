@@ -1,8 +1,10 @@
-const analyzeBtn=document.getElementById("analyzeBtn")
+// SKILL ANALYZER
+
+const analyzeSkills=document.getElementById("analyzeSkills")
 const result=document.getElementById("result")
 const roadmapBox=document.getElementById("roadmap")
 
-analyzeBtn.addEventListener("click",()=>{
+analyzeSkills.addEventListener("click",()=>{
 
 const skills=[]
 const checked=document.querySelectorAll("input[type='checkbox']:checked")
@@ -30,11 +32,9 @@ suggestions="Your skill stack looks strong!"
 
 result.innerHTML=suggestions
 
-
 generateRoadmap(skills)
 
 })
-
 
 function generateRoadmap(skills){
 
@@ -60,24 +60,40 @@ roadmapBox.innerHTML=roadmap.join("<br>")
 }
 
 
+// GITHUB ANALYZER
 
-document.getElementById("analyzeGithub").addEventListener("click",()=>{
+document.getElementById("analyzeGithub").addEventListener("click",async ()=>{
 
 const username=document.getElementById("githubUser").value
 
-fetch(`https://api.github.com/users/${username}/repos`)
+if(username===""){
+document.getElementById("githubResult").innerHTML="Enter GitHub username"
+return
+}
+
+const userData=await fetch(`https://api.github.com/users/${username}`)
 .then(res=>res.json())
-.then(data=>{
+
+const repoData=await fetch(`https://api.github.com/users/${username}/repos`)
+.then(res=>res.json())
 
 let languages={}
 
-data.forEach(repo=>{
+repoData.forEach(repo=>{
 if(repo.language){
 languages[repo.language]=(languages[repo.language]||0)+1
 }
 })
 
-let output="Languages used:<br>"
+let output=`
+<h3>${userData.name}</h3>
+<img src="${userData.avatar_url}" width="100">
+<p>Public Repositories: ${userData.public_repos}</p>
+<p>Followers: ${userData.followers}</p>
+<p><a href="${userData.html_url}" target="_blank">Visit GitHub</a></p>
+<br>
+<h4>Languages Used</h4>
+`
 
 for(let lang in languages){
 output+=lang+" : "+languages[lang]+" repos<br>"
@@ -87,27 +103,13 @@ document.getElementById("githubResult").innerHTML=output
 
 })
 
-})
 
+// JOB MARKET DEMAND
 
+const marketBtn=document.getElementById("loadMarket")
+const marketInfo=document.getElementById("marketInfo")
 
-const ctx=document.getElementById("demandChart")
-
-new Chart(ctx,{
-type:"bar",
-data:{
-labels:["JavaScript","React","Python","Machine Learning","Docker"],
-datasets:[{
-label:"Market Demand %",
-data:[95,88,92,90,80]
-}]
-}
-})
-
-const marketBtn = document.getElementById("loadMarket")
-const marketInfo = document.getElementById("marketInfo")
-
-const jobData = {
+const jobData={
 JavaScript:95,
 React:90,
 Python:93,
@@ -123,10 +125,10 @@ marketBtn.addEventListener("click",()=>{
 let output="Top skills in job market:<br><br>"
 
 for(let skill in jobData){
-output += skill + " → " + jobData[skill] + "% demand<br>"
+output+=skill+" → "+jobData[skill]+"% demand<br>"
 }
 
-marketInfo.innerHTML = output
+marketInfo.innerHTML=output
 
 loadJobChart()
 
@@ -134,9 +136,9 @@ loadJobChart()
 
 function loadJobChart(){
 
-const ctx2=document.getElementById("jobChart")
+const ctx=document.getElementById("jobChart")
 
-new Chart(ctx2,{
+new Chart(ctx,{
 type:"bar",
 data:{
 labels:Object.keys(jobData),
@@ -146,35 +148,5 @@ data:Object.values(jobData)
 }]
 }
 })
-
-}
-const analyzeBtn = document.getElementById("analyzeBtn")
-const githubResult = document.getElementById("githubResult")
-
-analyzeBtn.addEventListener("click", analyzeGithub)
-
-async function analyzeGithub(){
-
-const username = document.getElementById("githubUser").value
-
-if(username === ""){
-githubResult.innerHTML="Please enter a username"
-return
-}
-
-const url = "https://api.github.com/users/" + username
-
-const response = await fetch(url)
-
-const data = await response.json()
-
-githubResult.innerHTML = `
-<h3>${data.name}</h3>
-<img src="${data.avatar_url}" width="100">
-<p>Public Repositories: ${data.public_repos}</p>
-<p>Followers: ${data.followers}</p>
-<p>Following: ${data.following}</p>
-<p>Profile: <a href="${data.html_url}" target="_blank">Visit GitHub</a></p>
-`
 
 }
