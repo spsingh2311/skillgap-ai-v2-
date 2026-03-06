@@ -103,3 +103,48 @@ data:[95,88,92,90,80]
 }]
 }
 })
+
+const marketBtn = document.getElementById("loadMarket")
+const marketInfo = document.getElementById("marketInfo")
+
+const jobData = {
+JavaScript:95,
+React:90,
+Python:93,
+MachineLearning:88,
+NodeJS:85,
+Docker:82,
+AWS:87,
+SQL:84
+}
+
+marketBtn.addEventListener("click",()=>{
+
+let output="Top skills in job market:<br><br>"
+
+for(let skill in jobData){
+output += skill + " → " + jobData[skill] + "% demand<br>"
+}
+
+marketInfo.innerHTML = output
+
+loadJobChart()
+
+})
+
+function loadJobChart(){
+
+const ctx2=document.getElementById("jobChart")
+
+new Chart(ctx2,{
+type:"bar",
+data:{
+labels:Object.keys(jobData),
+datasets:[{
+label:"Market Demand %",
+data:Object.values(jobData)
+}]
+}
+})
+
+}
