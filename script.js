@@ -191,3 +191,4 @@ resumeResult.innerHTML="No major skills detected."
 reader.readAsText(file)
 
 })
+
