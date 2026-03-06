@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillGap AI Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h2>SkillGap AI</h2>
+
+<ul>
+
+<li>Dashboard</li>
+<li>Skills</li>
+<li>Roadmap</li>
+<li>GitHub Analyzer</li>
+
+</ul>
+
+</div>
+
+<!-- MAIN AREA -->
+
+<div class="main">
+
+<h1>Developer Skill Dashboard</h1>
+
+<section class="card">
+
+<h3>Select Your Skills</h3>
+
+<div class="skills">
+
+<label><input type="checkbox" value="HTML">HTML</label>
+<label><input type="checkbox" value="CSS">CSS</label>
+<label><input type="checkbox" value="JavaScript">JavaScript</label>
+<label><input type="checkbox" value="React">React</label>
+<label><input type="checkbox" value="NodeJS">NodeJS</label>
+<label><input type="checkbox" value="Python">Python</label>
+<label><input type="checkbox" value="MachineLearning">Machine Learning</label>
+
+</div>
+
+<button id="analyzeBtn">Analyze Skills</button>
+
+<div id="result"></div>
+
+</section>
+
+<section class="card">
+
+<h3>Career Roadmap</h3>
+
+<div id="roadmap"></div>
+
+</section>
+
+<section class="card">
+
+<h3>GitHub Profile Analyzer</h3>
+
+<input id="githubUser" placeholder="Enter GitHub username">
+
+<button id="analyzeGithub">Analyze</button>
+
+<div id="githubResult"></div>
+
+</section>
+
+<section class="card">
+
+<h3>Market Demand</h3>
+
+<canvas id="demandChart"></canvas>
+
+</section>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
