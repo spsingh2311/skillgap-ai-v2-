@@ -2,8 +2,10 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SkillGap AI Dashboard</title>
 
 <link rel="stylesheet" href="style.css">
@@ -23,21 +25,21 @@
 <h2>SkillGap AI</h2>
 
 <ul>
-
 <li>Dashboard</li>
 <li>Skills</li>
 <li>Roadmap</li>
 <li>GitHub Analyzer</li>
-
 </ul>
 
 </div>
 
-<!-- MAIN AREA -->
+<!-- MAIN CONTENT -->
 
 <div class="main">
 
 <h1>Developer Skill Dashboard</h1>
+
+<!-- SKILL ANALYZER -->
 
 <section class="card">
 
@@ -45,21 +47,24 @@
 
 <div class="skills">
 
-<label><input type="checkbox" value="HTML">HTML</label>
-<label><input type="checkbox" value="CSS">CSS</label>
-<label><input type="checkbox" value="JavaScript">JavaScript</label>
-<label><input type="checkbox" value="React">React</label>
-<label><input type="checkbox" value="NodeJS">NodeJS</label>
-<label><input type="checkbox" value="Python">Python</label>
-<label><input type="checkbox" value="MachineLearning">Machine Learning</label>
+<label><input type="checkbox" value="HTML"> HTML</label>
+<label><input type="checkbox" value="CSS"> CSS</label>
+<label><input type="checkbox" value="JavaScript"> JavaScript</label>
+<label><input type="checkbox" value="React"> React</label>
+<label><input type="checkbox" value="NodeJS"> NodeJS</label>
+<label><input type="checkbox" value="Python"> Python</label>
+<label><input type="checkbox" value="MachineLearning"> Machine Learning</label>
 
 </div>
 
-<button id="analyzeBtn">Analyze Skills</button>
+<button id="analyzeSkills">Analyze Skills</button>
 
 <div id="result"></div>
 
 </section>
+
+
+<!-- CAREER ROADMAP -->
 
 <section class="card">
 
@@ -69,27 +74,36 @@
 
 </section>
 
+
+<!-- GITHUB ANALYZER -->
+
 <section class="card">
 
 <h3>GitHub Profile Analyzer</h3>
 
 <input id="githubUser" placeholder="Enter GitHub username">
 
-<button id="analyzeGithub">Analyze</button>
+<button id="analyzeGithub">Analyze Profile</button>
 
 <div id="githubResult"></div>
 
 </section>
-  
+
+
+<!-- RESUME ANALYZER -->
+
 <section class="card">
 
 <h3>Resume Skill Analyzer</h3>
 
-<input type="file" id="resumeUpload" accept=".txt">
+<input type="file" id="resumeUpload" accept=".txt,.pdf,.docx">
 
 <div id="resumeResult"></div>
 
 </section>
+
+
+<!-- MARKET DEMAND -->
 
 <section class="card">
 
@@ -100,26 +114,6 @@
 <div id="marketInfo"></div>
 
 <canvas id="jobChart"></canvas>
-
-</section>
-
-<section class="github-section">
-
-<h2>GitHub Profile Analyzer</h2>
-
-<input type="text" id="githubUser" placeholder="Enter GitHub Username">
-
-<button id="analyzeBtn">Analyze Profile</button>
-
-<div id="githubResult"></div>
-
-</section>
-
-<section class="card">
-
-<h3>Market Demand</h3>
-
-<canvas id="demandChart"></canvas>
 
 </section>
 
