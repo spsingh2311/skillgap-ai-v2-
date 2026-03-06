@@ -150,3 +150,44 @@ data:Object.values(jobData)
 })
 
 }
+const resumeUpload=document.getElementById("resumeUpload")
+const resumeResult=document.getElementById("resumeResult")
+
+resumeUpload.addEventListener("change",function(e){
+
+const file=e.target.files[0]
+
+if(!file) return
+
+const reader=new FileReader()
+
+reader.onload=function(event){
+
+const text=event.target.result.toLowerCase()
+
+const keywords=[
+"html","css","javascript","react","node",
+"python","django","flask",
+"machine learning","tensorflow","pytorch",
+"sql","mongodb","docker","aws","azure"
+]
+
+let detected=[]
+
+keywords.forEach(skill=>{
+if(text.includes(skill)){
+detected.push(skill)
+}
+})
+
+if(detected.length>0){
+resumeResult.innerHTML="Skills detected: "+detected.join(", ")
+}else{
+resumeResult.innerHTML="No major skills detected."
+}
+
+}
+
+reader.readAsText(file)
+
+})
